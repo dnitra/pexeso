@@ -1,16 +1,33 @@
 "use strict";
-// // Selecting elements
-// const cardsArr = ["url1", "url2", "url3", "..."];
-// // console.log(cardsArr);
-// // Shuffle cards array
 
+// Selecting elements
+
+const cardsArr = ["rubble", "zuma", "skye", "marshal", "rocky", "ryder"];
+const pexesoDiv = document.querySelector(".pexesos");
 const cards = document.querySelectorAll(".pexesos__card");
+
+// Shuffle cards function
+const shuffleCards = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+//creating newCardsArray which is made of cardsArr twice in a row and then is being shuffled
+const newCardsArray = shuffleCards([...cardsArr, ...cardsArr]);
+
+// //inserting cards into pexesos div as images
+// newCardsArray.forEach((card) => {
+//   pexesoDiv.innerHTML += `<img class="pexesos__card" src="img/${card}.png" alt="${card}">`;
+// });
 
 // Card flipping function
 
 cards.forEach((card) => {
   card.addEventListener("click", () => {
-    card.classList.toggle("card_flipped");
+    card.classList.toggle("flipped");
     console.log("card flipped");
   });
 });
