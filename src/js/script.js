@@ -1,10 +1,12 @@
 "use strict";
 // Selecting elements
 const cardsArr = ["url1", "url2", "url3", "..."];
-console.log(cardsArr);
+// console.log(cardsArr);
 // Shuffle cards array
 const shuffle = () => {
-  cardsArr.forEach((url, i) => )
+  cardsArr.forEach((url, i) => {
+    arr.push(url[Math.random()]);
+  });
 };
 shuffle();
 
