@@ -46,6 +46,7 @@ body {
     display: flex;
     align-items: center;
     backface-visibility: hidden;
+    background-color: #fff;
   }
 
   &__card-img_back {
@@ -60,6 +61,14 @@ body {
   }
 
   .hidden {
+    visibility: hidden;
+  }
+
+  .disabled {
+    pointer-events: none;
+  }
+
+  .match {
     visibility: hidden;
   }
 }
