@@ -18,13 +18,20 @@ const shuffleCards = (array) => {
 //creating newCardsArray which is made of cardsArr twice in a row and then is being shuffled
 const newCardsArray = shuffleCards([...cardsArr, ...cardsArr]);
 
-// //inserting cards into pexesos div as images
-// newCardsArray.forEach((card) => {
-//   pexesoDiv.innerHTML += `<img class="pexesos__card" src="img/${card}.png" alt="${card}">`;
-// });
+//inserting cards into pexesos div as images
+
+newCardsArray.forEach((card) => {
+  pexesoDiv.innerHTML += `<div class="pexesos__card">
+          <img
+            class="pexesos__card-img pexesos__card-img_front"
+            src="img/${card}.png"
+            alt=""
+          />
+          <div class="pexesos__card-img pexesos__card-img_back"></div>`;
+  console.log(pexesoDiv);
+});
 
 // Card flipping function
-
 cards.forEach((card) => {
   card.addEventListener("click", () => {
     card.classList.toggle("flipped");
