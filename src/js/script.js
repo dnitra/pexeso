@@ -1,8 +1,9 @@
-"use strict";
-
 // Selecting elements
 
-const cardsArr = ["rubble", "zuma", "skye", "marshall", "rocky", "ryder"];
+let cardsArr = ["rubble", "zuma", "skye", "marshall", "rocky", "ryder"];
+
+cardsArr = [...cardsArr, ...cardsArr];
+
 const pexesoDiv = document.querySelector(".pexeso");
 let firstClick = true;
 let secondClick = false;
@@ -19,13 +20,15 @@ const shuffleCards = (array) => {
 };
 
 //creating newCardsArray which is made of cardsArr twice in a row and then is being shuffled
-const newCardsArray = shuffleCards([...cardsArr, ...cardsArr]);
+shuffleCards(cardsArr);
 
 // //inserting cards into pexeso div as images
 
 const displayCards = () => {
-  newCardsArray.forEach((card, index) => {
+  console.log(cardsArr);
+  cardsArr.forEach((card, index) => {
     console.log(card);
+
     pexesoDiv.innerHTML += ` <div class="pexeso__card flipped ${card}">
         <img
           class="pexeso__card-img pexeso__card-img_front"
@@ -42,12 +45,29 @@ displayCards();
 // Card flipping function
 
 let cardsOpened = [];
+let cardsClosed = [];
 
 const cards = document.querySelectorAll(".pexeso__card");
 cards.forEach((card) => {
+  cardsClosed.push(card);
+
   card.addEventListener("click", () => {
     // What happens after click
     cardsOpened.push(card);
+
+    //if two cards are clicked then the another card cannot be clicked for set amount of time
+    if (cardsOpened.length == 2) {
+      cardsClosed.splice(cardsClosed.indexOf(card), 1);
+      cardsClosed.forEach((item) => {
+        item.classList.toggle("disabled");
+        setTimeout(() => {
+          item.classList.toggle("disabled");
+          cardsClosed.push(card);
+        }, 1500);
+      });
+    }
+
+    //card which is clicked will be flipped and disabled
     card.classList.toggle("flipped");
     card.classList.toggle("disabled");
 
@@ -111,43 +131,5 @@ cards.forEach((card) => {
         clearOpenedCards();
       }
     }
-
-    // if (
-    //   !card.classList.contains("flipped") ||
-    //   (firstClick &&
-    //     !secondClick &&
-    //     Array.from(cards).every((el) => !el.classList.contains("flipped")))
-    // ) {
-    //   return;
-    // }
-    // // Clicking card
-    // if (firstClick) {
-    //   firstClick = false;
-    //   secondClick = true;
-    //   card.classList.toggle("flipped");
-    //   firstCard = card.id;
-    //   console.log("card id: " + firstCard);
-    //   console.log(card.firstElementChild.src);
-    // } else {
-    //   firstClick = true;
-    //   secondClick = false;
-    //   secondCard = card.id;
-    //   card.classList.toggle("flipped");
-    //   // Matching 2 cards
-    //   if (firstCard.replace(/[0-9]/g, "") === card.id.replace(/[0-9]/g, "")) {
-    //     score++;
-    //     setTimeout(() => {
-    //       document.getElementById(firstCard).style.visibility = "hidden";
-    //       card.style.visibility = "hidden";
-    //     }, 1000);
-    //     console.log(score);
-    //   } else {
-    //     setTimeout(() => {
-    //       document.getElementById(firstCard).classList.toggle("flipped");
-    //       card.classList.toggle("flipped");
-    //       secondClick = true;
-    //     }, 1000);
-    //   }
-    // }
   });
 });
