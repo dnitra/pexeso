@@ -2,7 +2,7 @@
 
 // Selecting elements
 
-const cardsArr = ["rubble", "zuma", "skye", "marshal", "rocky", "ryder"];
+const cardsArr = ["rubble", "zuma", "skye", "marshall", "rocky", "ryder"];
 const pexesoDiv = document.querySelector(".pexeso");
 let firstClick = true;
 let secondClick = false;
