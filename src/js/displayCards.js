@@ -1,6 +1,6 @@
 const pexesoDiv = document.querySelector(".pexeso");
 
-export const displayCards = (cardsArr) => {
+export const displayCards = (cardsArr, collection) => {
   console.log(cardsArr);
   cardsArr.forEach((card, index) => {
     console.log(card);
@@ -8,10 +8,10 @@ export const displayCards = (cardsArr) => {
     pexesoDiv.innerHTML += ` <div class="pexeso__card flipped ${card}">
         <img
           class="pexeso__card-img pexeso__card-img_front"
-          src="img/${card}.png"
+          src="img/Collections/${collection}/${card}.png"
           alt="${card}."
         />
-        <div class="pexeso__card-img pexeso__card-img_back"></div>
+        <img src = "img/Collections/${collection}/back-logo.png" class="pexeso__card-img pexeso__card-img_back"></img>
       </div>`;
   });
 };

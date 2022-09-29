@@ -53,10 +53,9 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background: url("../img/back-logo.png");
-    background-position: center;
-    background-size: 80%;
-    background-repeat: no-repeat;
+    width: 100%;
+    padding: 15%;
+   
     transform: rotateY(180deg);
   }
 

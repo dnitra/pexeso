@@ -1,3 +1,4 @@
+import { displayPlayers } from "./displayPlayers";
 import { displayCards } from "./displayCards";
 import { shuffleArray } from "./shuffleArray";
 import { playRound } from "./playRound";
@@ -10,14 +11,16 @@ cardsArr = [...cardsArr, ...cardsArr];
 shuffleArray(cardsArr);
 
 //inserting cards into pexeso div as images
-displayCards(cardsArr);
+let collection = "Paw_patrol";
+displayCards(cardsArr, collection);
 
-// Play rounds
-
+// play rounds
 const cards = document.querySelectorAll(".pexeso__card");
 const players = [
   { name: "Kuba", score: 0 },
   { name: "David", score: 0 },
 ];
-
 playRound(cards, players);
+
+//display players
+displayPlayers(players);

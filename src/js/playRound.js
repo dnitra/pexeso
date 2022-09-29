@@ -58,7 +58,6 @@ export const playRound = (cards, players) => {
           cardsOpened[0].classList.toggle("match");
           cardsOpened[1].classList.toggle("match");
 
-          
           clearOpenedCards();
         }
       }
@@ -76,8 +75,11 @@ export const playRound = (cards, players) => {
               cardsOpened[1].classList.toggle("match");
             }
             clearOpenedCards();
-              player.score++;
-              console.log(`${player.name} má score ${player.score}`);
+            player.score++;
+            document.querySelector(
+              `.players .${player.name} .player__score span`
+            ).textContent = player.score;
+            console.log(`${player.name} má score ${player.score}`);
           }, 1500);
         }
 
