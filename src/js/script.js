@@ -4,23 +4,42 @@ import { shuffleArray } from "./shuffleArray";
 import { playRound } from "./playRound";
 
 // Selecting cards collection
-let cardsArr = ["rubble", "zuma", "skye", "marshal", "rocky", "ryder"];
+let cardsArr = ["rubble", "zuma", "skye", "marshall", "rocky", "ryder"];
 cardsArr = [...cardsArr, ...cardsArr];
 
-//shuffeling the array of cards
-shuffleArray(cardsArr);
+// Homepage
+const collections = document.querySelectorAll(".homepage__collection");
+const homepage = document.querySelector(".homepage");
 
-//inserting cards into pexeso div as images
-let collection = "Paw_patrol";
-displayCards(cardsArr, collection);
+collections.forEach((collection, i) => {
+  collection.addEventListener("click", () => {
+    // Selecting elements
+    let pexesoDiv = document.querySelector(".pexeso");
+    let collection = "paw_patrol";
+    console.log(pexesoDiv);
+    // Changing styles
+    homepage.classList.add("inactive");
+    document.body.style.background = "none";
+    pexesoDiv.classList.remove("inactive");
+    shuffleArray(cardsArr);
+    displayCards(cardsArr, collection);
 
-// play rounds
-const cards = document.querySelectorAll(".pexeso__card");
-const players = [
-  { name: "Kuba", score: 0 },
-  { name: "David", score: 0 },
-];
-playRound(cards, players);
+    //shuffeling the array of cards
+    // shuffleArray(cardsArr);
 
-//display players
-displayPlayers(players);
+    // //inserting cards into pexeso div as images
+    // let collection = "paw_patrol";
+    // displayCards(cardsArr, collection);
+
+    // play rounds
+    const cards = document.querySelectorAll(".pexeso__card");
+    const players = [
+      { name: "Kuba", score: 0 },
+      { name: "David", score: 0 },
+    ];
+    playRound(cards, players);
+
+    //display players
+    displayPlayers(players);
+  });
+});

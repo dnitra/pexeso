@@ -5,7 +5,7 @@ export const playRound = (cards, players) => {
   let player = players[playerIndex];
   console.log(`Nyní je na řadě ${player.name}`);
   console.log(`${player.name} má score ${player.score}`);
-
+  console.log(cards);
   cards.forEach((card) => {
     cardsClosed.push(card);
 

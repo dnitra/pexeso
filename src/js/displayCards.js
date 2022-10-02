@@ -3,7 +3,7 @@ const pexesoDiv = document.querySelector(".pexeso");
 export const displayCards = (cardsArr, collection) => {
   console.log(cardsArr);
   cardsArr.forEach((card, index) => {
-    console.log(card);
+    // console.log(card);
 
     pexesoDiv.innerHTML += ` <div class="pexeso__card flipped ${card}">
         <img
